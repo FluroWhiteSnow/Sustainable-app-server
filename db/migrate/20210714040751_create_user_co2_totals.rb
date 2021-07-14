@@ -5,8 +5,7 @@ class CreateUserCo2Totals < ActiveRecord::Migration[6.1]
       t.float :pt_co2_total
       t.float :drive_co2_total
       t.float :coffee_cups_co2_total
-      t.float :reusible_cups_co2_total
-      t.references :co2_timeframes, null: false, foreign_key: true
+      t.float :reusable_cups_co2_total
 
       t.timestamps
     end

@@ -5,7 +5,7 @@ class CreateUserDailies < ActiveRecord::Migration[6.1]
       t.boolean :public_transport
       t.boolean :drive
       t.integer :coffee_cups
-      t.integer :reusible_cups
+      t.integer :reusable_cups
       t.references :user, null: false, foreign_key: true
       t.references :cups_total, null: false, foreign_key: true
       t.references :travel_total, null: false, foreign_key: true
