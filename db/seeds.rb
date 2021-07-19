@@ -12,16 +12,6 @@ if User.count == 0
     User.create(first_name: "Harrold", last_name: "Sanders", username: "Harrold1", password_digest: "test123", email: "harrold@gmail.com", department_code: "Accounting", admin: false, distance_from_work: 20)
 end
 
-if UserDaily.count == 0
-    UserDaily.create(user_id: 1, walk: true, public_transport: false, drive: false, coffee_cups: 5, reusable_cups: 0, cups_total_id: 1, travel_total_id: 1)
-    UserDaily.create(user_id: 2, walk: false, public_transport: true, drive: false, coffee_cups: 2, reusable_cups: 3, cups_total_id: 2, travel_total_id: 2)
-    UserDaily.create(user_id: 3, walk: false, public_transport: false, drive: true, coffee_cups: 0, reusable_cups: 8, cups_total_id: 3, travel_total_id: 3)
-    UserDaily.create(user_id: 1, walk: false, public_transport: false, drive: true, coffee_cups: 5, reusable_cups: 0, cups_total_id: 1, travel_total_id: 1)
-    UserDaily.create(user_id: 2, walk: true, public_transport: false, drive: false, coffee_cups: 2, reusable_cups: 3, cups_total_id: 2, travel_total_id: 2)
-    UserDaily.create(user_id: 3, walk: false, public_transport: true, drive: false, coffee_cups: 0, reusable_cups: 8, cups_total_id: 3, travel_total_id: 3)
-    puts "user created"
-end
-
 if CupsTotal.count == 0
     CupsTotal.create(coffee_cups_total: 0, reusable_cups_total: 0)
     CupsTotal.create(coffee_cups_total: 0, reusable_cups_total: 0)
@@ -34,6 +24,18 @@ if TravelTotal.count == 0
     TravelTotal.create(walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
     TravelTotal.create(walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
     puts "travel total created"
+end
+
+if UserDaily.count == 0
+    UserDaily.create(user_id: 1, walk: true, public_transport: false, drive: false, coffee_cups: 5, reusable_cups: 0, cups_total_id: 1, travel_total_id: 1)
+    UserDaily.create(user_id: 2, walk: false, public_transport: true, drive: false, coffee_cups: 2, reusable_cups: 3, cups_total_id: 2, travel_total_id: 2)
+    UserDaily.create(user_id: 3, walk: false, public_transport: false, drive: true, coffee_cups: 0, reusable_cups: 8, cups_total_id: 3, travel_total_id: 3)
+    UserDaily.create(user_id: 1, walk: false, public_transport: false, drive: true, coffee_cups: 5, reusable_cups: 0, cups_total_id: 1, travel_total_id: 1)
+    UserDaily.create(user_id: 2, walk: true, public_transport: false, drive: false, coffee_cups: 2, reusable_cups: 3, cups_total_id: 2, travel_total_id: 2)
+    UserDaily.create(user_id: 3, walk: false, public_transport: true, drive: false, coffee_cups: 0, reusable_cups: 8, cups_total_id: 3, travel_total_id: 3)
+    puts "user daily created"
+    puts UserDaily.create(user_id: 3, walk: false, public_transport: true, drive: false, coffee_cups: 0, reusable_cups: 8, cups_total_id: 3, travel_total_id: 3)
+
 end
 
 if UserCo2Total.count == 0 
