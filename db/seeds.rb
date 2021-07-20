@@ -13,16 +13,16 @@ if User.count == 0
 end
 
 if CupsTotal.count == 0
-    CupsTotal.create(coffee_cups_total: 0, reusable_cups_total: 0)
-    CupsTotal.create(coffee_cups_total: 0, reusable_cups_total: 0)
-    CupsTotal.create(coffee_cups_total: 0, reusable_cups_total: 0)
+    CupsTotal.create(user_id: 1, coffee_cups_total: 0, reusable_cups_total: 0)
+    CupsTotal.create(user_id: 2, coffee_cups_total: 0, reusable_cups_total: 0)
+    CupsTotal.create(user_id: 3, coffee_cups_total: 0, reusable_cups_total: 0)
     puts "cups total created"
 end
 
 if TravelTotal.count == 0 
-    TravelTotal.create(walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
-    TravelTotal.create(walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
-    TravelTotal.create(walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
+    TravelTotal.create(user_id: 1, walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
+    TravelTotal.create(user_id: 2, walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
+    TravelTotal.create(user_id: 3, walk_total_km: 0, pt_total_km: 0, drive_total_km: 0)
     puts "travel total created"
 end
 
@@ -37,15 +37,15 @@ if UserDaily.count == 0
 end
 
 if UserCo2Total.count == 0 
-    UserCo2Total.create(walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
-    UserCo2Total.create(walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
-    UserCo2Total.create(walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
+    UserCo2Total.create(user_id: 1, walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
+    UserCo2Total.create(user_id: 2, walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
+    UserCo2Total.create(user_id: 3, walk_co2_total: 0, pt_co2_total: 0, drive_co2_total: 0, coffee_cups_co2_total: 0, reusable_cups_co2_total: 0)
     puts "userco2total created"
 end
 
 if UserCo2Daily.count == 0
-    UserCo2Daily.create(walk_co2: 15, pt_co2: 0, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 1, user_co2_daily_total: 30)
-    UserCo2Daily.create(walk_co2: 20, pt_co2: 0, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 2, user_co2_daily_total: 35)
-    UserCo2Daily.create(walk_co2: 0, pt_co2: 30, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 3, user_co2_daily_total: 45)
+    UserCo2Daily.create(user_co2_total_id: 1, walk_co2: 15, pt_co2: 0, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 1, user_co2_daily_total: 30)
+    UserCo2Daily.create(user_co2_total_id: 2, walk_co2: 20, pt_co2: 0, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 2, user_co2_daily_total: 35)
+    UserCo2Daily.create(user_co2_total_id: 3, walk_co2: 0, pt_co2: 30, drive_co2: 0, coffee_cups_co2: 0, reusable_cups_co2: 15, user_daily_id: 3, user_co2_daily_total: 45)
     puts "userco2daily created"
 end
