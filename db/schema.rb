@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_040930) do
+ActiveRecord::Schema.define(version: 2021_07_20_020926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_07_14_040930) do
     t.integer "reusable_cups_total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cups_totals_on_user_id"
   end
 
   create_table "travel_totals", force: :cascade do |t|
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_07_14_040930) do
     t.float "drive_total_km"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_travel_totals_on_user_id"
   end
 
   create_table "user_co2_dailies", force: :cascade do |t|
@@ -53,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_07_14_040930) do
     t.float "reusable_cups_co2_total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_user_co2_totals_on_user_id"
   end
 
   create_table "user_dailies", force: :cascade do |t|
@@ -84,8 +90,11 @@ ActiveRecord::Schema.define(version: 2021_07_14_040930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "cups_totals", "users"
+  add_foreign_key "travel_totals", "users"
   add_foreign_key "user_co2_dailies", "user_co2_totals"
   add_foreign_key "user_co2_dailies", "user_dailies"
+  add_foreign_key "user_co2_totals", "users"
   add_foreign_key "user_dailies", "cups_totals"
   add_foreign_key "user_dailies", "travel_totals"
   add_foreign_key "user_dailies", "users"
