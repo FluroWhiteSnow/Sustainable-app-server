@@ -1,0 +1,2 @@
+class TravelTotalController < ApplicationController
+end

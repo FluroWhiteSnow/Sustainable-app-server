@@ -1,0 +1,2 @@
+class CupsTotalController < ApplicationController
+end
