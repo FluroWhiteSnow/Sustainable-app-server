@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :user_dailies
     has_one :cups_total 
     has_one :user_co2_total
+    has_one :travel_total
 
     after_create :user_total_tables
 

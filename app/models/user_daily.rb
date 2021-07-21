@@ -4,7 +4,29 @@ class UserDaily < ApplicationRecord
   belongs_to :travel_total
   has_one :user_co2_daily
 
+  before_validation :set_totals
   after_create :increment_cups, :increment_travel, :calc_co2
+
+  # before_update :previous_cups
+  # after_update :update_total_table
+
+  # def previous_cups
+  #   @coffee_cups = self.coffee_cups
+  #   @reusable_cups = self.reusable_cups
+  # end
+
+  # def update_total_table
+  #   coffee_cups_difference = self.coffee_cups - @coffee_cups
+  #   reusable_cups_difference = self.reusable_cups - @reusable_cups
+  #   total_cups = self.cups_total
+  #   total_cups.update(coffee_cups_total: total_cups.coffee_cups_total + coffee_cups_difference,  reusable_cups_total: total_cups.reusable_cups_total + reusable_cups_difference)
+  # end
+
+  def set_totals
+    return unless self.new_record?
+    self.cups_total_id = self.user.cups_total.id
+    self.travel_total_id = self.user.travel_total.id
+  end
 
   def increment_cups
     total_cups = self.cups_total

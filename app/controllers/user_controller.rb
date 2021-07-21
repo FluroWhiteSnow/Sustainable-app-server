@@ -29,14 +29,15 @@ class UserController < ApplicationController
         render json: @user
     end
 
-    # def update
-    #     @user.update(user_params)
-    #     if @user.errors.any? 
-    #         render json: @user.errors, status: :unprocessasble_entity
-    #     else
-    #         render json: @user, status: 201
-    #     end
-    # end
+    def update
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        if @user.errors.any? 
+            render json: @user.errors, status: :unprocessasble_entity
+        else
+            render json: @user, status: 201
+        end
+    end
 
     private
 
