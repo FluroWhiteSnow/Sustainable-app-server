@@ -17,7 +17,7 @@ class UserDailyController < ApplicationController
         @user_daily.update(user_params)
         if @user_daily.errors.any? 
             render json: @user_daily.errors, status: :unprocessasble_entity
-        else
+        else 
             render json: @user_daily, status: 201
         end
     end
