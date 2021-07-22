@@ -1,3 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  scope '/api' do
+    resources :user
+    resources :user_daily
+    resources :user_co2_daily
+    resources :travel_total 
+    resources :cups_total 
+    resources :user_co2_total 
+
+    scope '/auth' do
+      post '/sign_up', to: 'user#create' 
+      post '/sign_in', to: 'user#sign_in'
+      
+    end
+  end
 end
+

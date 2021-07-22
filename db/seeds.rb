@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if User.count == 0
-    User.create(first_name: "Ananda", last_name: "Rodziewicz", username: "Ananda1", password_digest: "test123", email: "anrodziewiczz@gmail.com", department_code: "Finance", admin: false, distance_from_work: 5)
-    User.create(first_name: "Jackie", last_name: "Sun", username: "Jackie1", password_digest: "test123", email: "jackiesun@gmail.com", department_code: "IT", admin: false, distance_from_work: 30)
-    User.create(first_name: "Harrold", last_name: "Sanders", username: "Harrold1", password_digest: "test123", email: "harrold@gmail.com", department_code: "Accounting", admin: false, distance_from_work: 20)
+    User.create(first_name: "Ananda", last_name: "Rodziewicz", username: "Ananda1", password: "test123", password_confirmation: "test123", email: "anrodziewiczz@gmail.com", department_code: "Finance", admin: false, distance_from_work: 5)
+    User.create(first_name: "Jackie", last_name: "Sun", username: "Jackie1", password: "test123", password_confirmation: "test123", email: "jackiesun@gmail.com", department_code: "IT", admin: false, distance_from_work: 30)
+    User.create(first_name: "Harrold", last_name: "Sanders", username: "Harrold1", password: "test123", password_confirmation: "test123", email: "harrold@gmail.com", department_code: "Accounting", admin: false, distance_from_work: 20)
 end
 
 if CupsTotal.count == 0
