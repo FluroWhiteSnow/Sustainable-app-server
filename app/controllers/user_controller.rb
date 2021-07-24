@@ -1,5 +1,14 @@
 class UserController < ApplicationController
-    
+
+    def index 
+        if current_user.admin == true 
+            @user = User.all 
+        else 
+            @user = current_user
+        end 
+        render json: @user
+    end
+
     def create
         @user = User.create(user_params)
 
@@ -22,11 +31,6 @@ class UserController < ApplicationController
         else 
             render json: {error: "Incorrect Email or Password"}, status: 404
         end
-    end
-
-
-    def show
-        render json: @user
     end
 
     def update
