@@ -2,7 +2,8 @@ class UserDaily < ApplicationRecord
   belongs_to :user
   belongs_to :cups_total
   belongs_to :travel_total
-  has_one :user_co2_daily
+  has_one :user_co2_daily, dependent: :destroy
+  has_one :user_co2_daily, dependent: :nullify
 
   before_validation :set_totals
   after_create :increment_cups, :increment_travel, :calc_co2
