@@ -2,11 +2,12 @@ class TravelTotalController < ApplicationController
     before_action :authenticate_user
 
     def index
-        if current_user.admin == true 
-            @travel_total = TravelTotal.all
-        else
-            @travel_total = current_user.travel_total
-        end
+        @travel_total = current_user.travel_total
+        render json: @travel_total
+    end
+
+    def index_all
+        @travel_total = TravelTotal.all
         render json: @travel_total
     end
 end
