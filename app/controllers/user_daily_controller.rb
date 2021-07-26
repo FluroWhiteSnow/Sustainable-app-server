@@ -3,11 +3,12 @@ class UserDailyController < ApplicationController
     before_action :set_daily, only: [:update, :destroy]
 
     def index
-        if current_user.admin == true
-            @all_dailies = UserDaily.all 
-        else 
-           @all_dailies = current_user.user_dailies.all
-        end
+        @all_dailies = current_user.user_dailies.all
+        render json: @all_dailies
+    end
+
+    def index_all
+        @all_dailies = UserDaily.all 
         render json: @all_dailies
     end
 

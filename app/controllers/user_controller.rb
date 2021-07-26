@@ -1,12 +1,13 @@
 class UserController < ApplicationController
-    before_action :authenticate_user
+    before_action :authenticate_user, only: [:update, :index, :index_all]
 
     def index 
-        if current_user.admin == true 
-            @user = User.all 
-        else 
-            @user = current_user
-        end 
+        @user = current_user
+        render json: @user
+    end
+
+    def index_all 
+        @user = User.all 
         render json: @user
     end
 
