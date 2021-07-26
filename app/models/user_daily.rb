@@ -3,7 +3,6 @@ class UserDaily < ApplicationRecord
   belongs_to :cups_total
   belongs_to :travel_total
   has_one :user_co2_daily, dependent: :destroy
-  has_one :user_co2_daily, dependent: :nullify
 
   before_validation :set_totals
   after_create :increment_cups, :increment_travel, :calc_co2
@@ -140,11 +139,5 @@ class UserDaily < ApplicationRecord
   def update_co2_daily(walkCo2, ptCo2, driveCo2, coffeeCo2, cupCo2, totalCo2, totalId)
     UserCo2Daily.update(user_co2_total_id: totalId, walk_co2: walkCo2, pt_co2: ptCo2, drive_co2: driveCo2, coffee_cups_co2: coffeeCo2, reusable_cups_co2: cupCo2, user_daily_id: self.id, user_co2_daily_total: totalCo2)
   end
-
-  # def delete_co2_daily
-  #   puts self.user_co2_daily.id
-  #   self.user_co2_daily.delete
-  #   puts "cannot hit this line"
-  # end
 
 end

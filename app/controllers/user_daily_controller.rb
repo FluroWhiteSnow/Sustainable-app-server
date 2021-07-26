@@ -1,5 +1,6 @@
 class UserDailyController < ApplicationController
-    before_action :authenticate_user, :set_daily, only: [:update, :destroy]
+    before_action :authenticate_user
+    before_action :set_daily, only: [:update, :destroy]
 
     def index
         if current_user.admin == true
