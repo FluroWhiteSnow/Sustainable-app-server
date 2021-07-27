@@ -7,6 +7,7 @@ class UserDaily < ApplicationRecord
   before_validation :set_totals
   after_create :increment_cups, :increment_travel, :calc_co2
   before_destroy :delete_cups_total_table, :delete_travel_total_table
+
   after_update :calc_co2
 
   def update_total_cups_table(params)
@@ -18,25 +19,6 @@ class UserDaily < ApplicationRecord
     reusable_cups_difference = @reusable_cups_new - @reusable_cups_old
     total_cups = self.cups_total
     total_cups.update(coffee_cups_total: total_cups.coffee_cups_total + coffee_cups_difference,  reusable_cups_total: total_cups.reusable_cups_total + reusable_cups_difference)
-  end
-
-  def delete_cups_total_table
-    coffee_cups = self.coffee_cups
-    reusable_cups = self.reusable_cups
-    total_cups = self.cups_total
-    total_cups.update(coffee_cups_total: total_cups.coffee_cups_total - coffee_cups,  reusable_cups_total: total_cups.reusable_cups_total - reusable_cups)
-  end
-
-  def delete_travel_total_table
-    total_travel = self.travel_total
-    distance = self.user.distance_from_work
-    if self.walk 
-      total_travel.update(walk_total_km: total_travel.walk_total_km - distance)
-    elsif self.public_transport 
-      total_travel.update(pt_total_km: total_travel.pt_total_km - distance)
-    elsif self.drive
-      total_travel.update(drive_total_km: total_travel.drive_total_km - distance)
-    end
   end
 
   def update_total_travel_table(params)
@@ -57,13 +39,31 @@ class UserDaily < ApplicationRecord
     elsif self.drive
       total_travel.update(drive_total_km: total_travel.drive_total_km - distance)
     end
-    
   end
 
   def set_totals
     return unless self.new_record?
     self.cups_total_id = self.user.cups_total.id
     self.travel_total_id = self.user.travel_total.id
+  end
+
+  def delete_cups_total_table
+    coffee_cups = self.coffee_cups
+    reusable_cups = self.reusable_cups
+    total_cups = self.cups_total
+    total_cups.update(coffee_cups_total: total_cups.coffee_cups_total - coffee_cups,  reusable_cups_total: total_cups.reusable_cups_total - reusable_cups)
+  end
+
+  def delete_travel_total_table
+    total_travel = self.travel_total
+    distance = self.user.distance_from_work
+    if self.walk 
+      total_travel.update(walk_total_km: total_travel.walk_total_km - distance)
+    elsif self.public_transport 
+      total_travel.update(pt_total_km: total_travel.pt_total_km - distance)
+    elsif self.drive
+      total_travel.update(drive_total_km: total_travel.drive_total_km - distance)
+    end
   end
 
   def increment_cups
@@ -137,7 +137,7 @@ class UserDaily < ApplicationRecord
   end
 
   def update_co2_daily(walkCo2, ptCo2, driveCo2, coffeeCo2, cupCo2, totalCo2, totalId)
-    UserCo2Daily.update(user_co2_total_id: totalId, walk_co2: walkCo2, pt_co2: ptCo2, drive_co2: driveCo2, coffee_cups_co2: coffeeCo2, reusable_cups_co2: cupCo2, user_daily_id: self.id, user_co2_daily_total: totalCo2)
+    self.user_co2_daily.update(user_co2_total_id: totalId, walk_co2: walkCo2, pt_co2: ptCo2, drive_co2: driveCo2, coffee_cups_co2: coffeeCo2, reusable_cups_co2: cupCo2, user_daily_id: self.id, user_co2_daily_total: totalCo2)
   end
 
 end

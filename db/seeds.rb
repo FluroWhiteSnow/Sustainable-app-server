@@ -17,11 +17,13 @@ end
 
 if UserDaily.count == 0
     20.times {
-        UserDaily.create(user_id: 1, walk: true, public_transport: false, drive: false, coffee_cups: 10, reusable_cups: 10, cups_total_id: 1, travel_total_id: 1)
-        UserDaily.create(user_id: 2, walk: false, public_transport: true, drive: false, coffee_cups: 6, reusable_cups: 4, cups_total_id: 2, travel_total_id: 2)
-        UserDaily.create(user_id: 3, walk: false, public_transport: true, drive: false, coffee_cups: 7, reusable_cups: 1, cups_total_id: 3, travel_total_id: 3)
-        UserDaily.create(user_id: 4, walk: true, public_transport: false, drive: false, coffee_cups: 3, reusable_cups:3, cups_total_id: 4, travel_total_id: 4)
-        UserDaily.create(user_id: 5, walk: false, public_transport: true, drive: false, coffee_cups: 10, reusable_cups: 7, cups_total_id: 5, travel_total_id: 5)
-        UserDaily.create(user_id: 6, walk: false, public_transport: false, drive: true, coffee_cups: 6, reusable_cups: 2, cups_total_id: 6, travel_total_id: 6)
+        random_coffee = rand(1..5)
+        random_reusable = (random_coffee * rand()).round 
+        UserDaily.create(user_id: 1, walk: true, public_transport: false, drive: false, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 1, travel_total_id: 1)
+        UserDaily.create(user_id: 2, walk: false, public_transport: true, drive: false, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 2, travel_total_id: 2)
+        UserDaily.create(user_id: 3, walk: false, public_transport: true, drive: false, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 3, travel_total_id: 3)
+        UserDaily.create(user_id: 4, walk: true, public_transport: false, drive: false, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 4, travel_total_id: 4)
+        UserDaily.create(user_id: 5, walk: false, public_transport: true, drive: false, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 5, travel_total_id: 5)
+        UserDaily.create(user_id: 6, walk: false, public_transport: false, drive: true, coffee_cups: random_coffee, reusable_cups: random_reusable, cups_total_id: 6, travel_total_id: 6)
     }
 end
