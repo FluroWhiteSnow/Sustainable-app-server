@@ -10,7 +10,7 @@ if User.count == 0
     User.create(first_name: "Bob", last_name: "Smith", username: "Bob1", password: "test123", password_confirmation: "test123", email: "bob@gmail.com", department_code: "Finance", admin: true, distance_from_work: 5)
     User.create(first_name: "George", last_name: "Homes", username: "George1", password: "test123", password_confirmation: "test123", email: "georgehomes@gmail.com", department_code: "IT", admin: true, distance_from_work: 30)
     User.create(first_name: "Harrold", last_name: "Sanders", username: "Harrold1", password: "test123", password_confirmation: "test123", email: "harrold@gmail.com", department_code: "Accounting", admin: true, distance_from_work: 20)
-    User.create(first_name: "Kevin", last_name: "Brock", username: "Kevin1", passworvd: "test123", password_confirmation: "test123", email: "kevin@gmail.com", department_code: "Finance", admin: true, distance_from_work: 30)
+    User.create(first_name: "Kevin", last_name: "Brock", username: "Kevin1", password: "test123", password_confirmation: "test123", email: "kevin@gmail.com", department_code: "Finance", admin: true, distance_from_work: 30)
     User.create(first_name: "Andrew", last_name: "Yorken", username: "Andrew1", password: "test123", password_confirmation: "test123", email: "andrew@gmail.com", department_code: "IT", admin: true, distance_from_work: 24)
     User.create(first_name: "Jordan", last_name: "Brathey", username: "Jordan1", password: "test123", password_confirmation: "test123", email: "jordan@gmail.com", department_code: "Accounting", admin: true, distance_from_work: 18)
 end
