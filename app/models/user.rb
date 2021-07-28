@@ -2,6 +2,10 @@ class User < ApplicationRecord
     has_secure_password
     validates :username, presence: true, uniqueness: true 
     validates :email, presence: true, uniqueness: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :password, presence: true
+    validates :distance_from_work, presence: true
 
     has_many :user_dailies
     has_one :cups_total 
