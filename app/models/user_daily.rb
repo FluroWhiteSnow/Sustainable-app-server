@@ -15,8 +15,8 @@ class UserDaily < ApplicationRecord
     @reusable_cups_new = params[:reusable_cups]
     @coffee_cups_old = self.coffee_cups
     @reusable_cups_old = self.reusable_cups
-    coffee_cups_difference = @coffee_cups_new - @coffee_cups_old
-    reusable_cups_difference = @reusable_cups_new - @reusable_cups_old
+    coffee_cups_difference = @coffee_cups_new.to_i - @coffee_cups_old.to_i
+    reusable_cups_difference = @reusable_cups_new.to_i - @reusable_cups_old.to_i
     total_cups = self.cups_total
     total_cups.update(coffee_cups_total: total_cups.coffee_cups_total + coffee_cups_difference,  reusable_cups_total: total_cups.reusable_cups_total + reusable_cups_difference)
   end
